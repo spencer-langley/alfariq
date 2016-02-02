@@ -1,0 +1,61 @@
+﻿@model alfariq.ViewModels.CompletedSessionViewModel
+    
+<h2>View Session Data</h2>
+
+<b>User: @Model.ParticipantUsername Session: @Model.SessionName (@Model.FeedbackMode)</b>
+<br />
+@foreach (var tb in Model.TrialBlocks)
+{
+    int longestProfileSetLength = tb.PassProfiles.Count;
+    if(tb.FailProfiles.Count > longestProfileSetLength)
+    {
+        longestProfileSetLength = tb.FailProfiles.Count;
+    }
+    <hr />
+    <table>
+        <tr>
+            <td colspan="2"><b>Pass Profiles:</b></td>
+            <td colspan="2"><b>Fail Profiles:</b></td>
+            <td colspan="2"><b>Block Index: @tb.IndexInSession</b></td>
+            <td colspan="2"><b>Duration: @(tb.Duration/1000.0) sec</b></td>
+        </tr>
+        @for (int i = 0; i < longestProfileSetLength; i++)
+        {
+            <tr>
+                <td colspan="2">
+                    @if (tb.PassProfiles.Count > i) { <text>@tb.PassProfiles[i].Text</text> }
+                </td>
+                <td colspan="2">
+                    @if (tb.FailProfiles.Count > i) { <text>@tb.FailProfiles[i].Text</text> }
+                </td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>    
+        }
+        <tr>
+            <td><b>Index</b></td>
+            <td><b>Correct?</b></td>
+            <td><b>Latency (sec)</b></td>
+            <td><b>Prompted</b></td>
+            <td><b>Option 1</b></td>
+            <td><b>Option 2</b></td>
+            <td><b>Option 3</b></td>
+            <td><b>Clicked</b></td>
+        </tr>
+        @foreach (var t in tb.Trials)
+        {
+            string answerColor = "red";
+            if (t.Correct) { answerColor = "green"; }
+            <tr>
+                <td>@t.IndexInTrialBlock</td>
+                <td style="color : @answerColor">@t.Correct</td>
+                <td>@(t.Latency/1000.0)</td>
+                <td>@t.PromptedWord</td>
+                <td>@t.Option1</td>
+                <td>@t.Option2</td>
+                <td>@t.Option3</td>
+                <td>@t.OptionPicked</td>
+            </tr>
+        }
+    </table>
+}

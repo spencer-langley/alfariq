@@ -1,0 +1,18 @@
+﻿@model alfariq.ViewModels.ParticipantWelcomeViewModel
+
+<img src="@Model.ImagePath" />
+
+Hello, @Model.Name.
+@if(Model.OpenSessions.Count > 0)
+{
+    <text>Please select a session to start:</text>
+    <br />
+    foreach (var key in Model.OpenSessions.Keys)
+    {
+        <a href="/Home/RunSession/?sessionID=@Model.OpenSessions[key]">@key</a>;
+    }
+}
+else
+{
+    <text>You have no pending sessions.</text>
+}

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db38bab79d27554b96b50aa57c010cd149Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="db38bab79d27554b96b50aa57c010cd149ModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Admins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FailProfilesForTrialBlocks" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.FailProfilesForTrialBlocks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeedbackConditions" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.FeedbackConditions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Participants" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Participants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PassProfilesForTrialBlocks" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.PassProfilesForTrialBlocks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profiles" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Profiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sessions" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Sessions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrialBlocks" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.TrialBlocks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Trials" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Words" EntityType="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PassProfilesForTrialBlocks_ToProfiles" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_PassProfilesForTrialBlocks_ToProfiles">
+      <End Role="Profiles" EntitySet="Profiles" />
+      <End Role="PassProfilesForTrialBlocks" EntitySet="PassProfilesForTrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PassProfilesForTrialBlocks_ToTrialBlocks" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_PassProfilesForTrialBlocks_ToTrialBlocks">
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+      <End Role="PassProfilesForTrialBlocks" EntitySet="PassProfilesForTrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilesForTrialBlocks_ToProfiles" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_ProfilesForTrialBlocks_ToProfiles">
+      <End Role="Profiles" EntitySet="Profiles" />
+      <End Role="FailProfilesForTrialBlocks" EntitySet="FailProfilesForTrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilesForTrialBlocks_ToTrialBlocks" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_ProfilesForTrialBlocks_ToTrialBlocks">
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+      <End Role="FailProfilesForTrialBlocks" EntitySet="FailProfilesForTrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_ToFeedbackConditions" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Sessions_ToFeedbackConditions">
+      <End Role="FeedbackConditions" EntitySet="FeedbackConditions" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_ToTParticipants" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Sessions_ToTParticipants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialBlocks_ToSessions" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_TrialBlocks_ToSessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToTrialBlocks" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToTrialBlocks">
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToWords">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Answer" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToWords_Answer">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt1" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToWords_Opt1">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt2" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToWords_Opt2">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt3" Association="db38bab79d27554b96b50aa57c010cd149Model.Store.FK_Trials_ToWords_Opt3">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FailProfilesForTrialBlocks">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+      <PropertyRef Name="TrialBlockID" />
+    </Key>
+    <Property Name="ProfileID" Type="int" Nullable="false" />
+    <Property Name="TrialBlockID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedbackConditions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Home" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PassProfilesForTrialBlocks">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+      <PropertyRef Name="TrialBlockID" />
+    </Key>
+    <Property Name="ProfileID" Type="int" Nullable="false" />
+    <Property Name="TrialBlockID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Home" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FeedbackConditionID" Type="int" Nullable="false" />
+    <Property Name="ParticipantID" Type="int" />
+    <Property Name="Completed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrialBlocks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="IndexInSession" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="int" />
+  </EntityType>
+  <EntityType Name="Trials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="WordID" Type="int" Nullable="false" />
+    <Property Name="Option1ID" Type="int" Nullable="false" />
+    <Property Name="Option2ID" Type="int" Nullable="false" />
+    <Property Name="Option3ID" Type="int" Nullable="false" />
+    <Property Name="AnswerID" Type="int" />
+    <Property Name="Latency" Type="int" />
+    <Property Name="TrialBlockID" Type="int" Nullable="false" />
+    <Property Name="IndexInTrialBlock" Type="int" />
+  </EntityType>
+  <EntityType Name="Words">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Arabic" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="English" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PassProfilesForTrialBlocks_ToProfiles">
+    <End Role="Profiles" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Profiles" Multiplicity="1" />
+    <End Role="PassProfilesForTrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.PassProfilesForTrialBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profiles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PassProfilesForTrialBlocks">
+        <PropertyRef Name="ProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PassProfilesForTrialBlocks_ToTrialBlocks">
+    <End Role="TrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.TrialBlocks" Multiplicity="1" />
+    <End Role="PassProfilesForTrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.PassProfilesForTrialBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialBlocks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PassProfilesForTrialBlocks">
+        <PropertyRef Name="TrialBlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilesForTrialBlocks_ToProfiles">
+    <End Role="Profiles" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Profiles" Multiplicity="1" />
+    <End Role="FailProfilesForTrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.FailProfilesForTrialBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profiles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FailProfilesForTrialBlocks">
+        <PropertyRef Name="ProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilesForTrialBlocks_ToTrialBlocks">
+    <End Role="TrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.TrialBlocks" Multiplicity="1" />
+    <End Role="FailProfilesForTrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.FailProfilesForTrialBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialBlocks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FailProfilesForTrialBlocks">
+        <PropertyRef Name="TrialBlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_ToFeedbackConditions">
+    <End Role="FeedbackConditions" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.FeedbackConditions" Multiplicity="1" />
+    <End Role="Sessions" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FeedbackConditions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="FeedbackConditionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_ToTParticipants">
+    <End Role="Participants" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Participants" Multiplicity="0..1" />
+    <End Role="Sessions" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialBlocks_ToSessions">
+    <End Role="Sessions" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Sessions" Multiplicity="1" />
+    <End Role="TrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.TrialBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrialBlocks">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToTrialBlocks">
+    <End Role="TrialBlocks" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.TrialBlocks" Multiplicity="1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialBlocks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="TrialBlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords">
+    <End Role="Words" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" Multiplicity="1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="WordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Answer">
+    <End Role="Words" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" Multiplicity="0..1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt1">
+    <End Role="Words" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" Multiplicity="1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option1ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt2">
+    <End Role="Words" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" Multiplicity="1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option2ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt3">
+    <End Role="Words" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Words" Multiplicity="1" />
+    <End Role="Trials" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Trials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option3ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AlfariqDataContext" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db38bab79d27554b96b50aa57c010cd149Entities2" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="AlfariqDataContext.Admin" />
+    <EntitySet Name="FeedbackConditions" EntityType="AlfariqDataContext.FeedbackCondition" />
+    <EntitySet Name="Participants" EntityType="AlfariqDataContext.Participant" />
+    <EntitySet Name="Profiles" EntityType="AlfariqDataContext.Profile" />
+    <EntitySet Name="Sessions" EntityType="AlfariqDataContext.Session" />
+    <EntitySet Name="TrialBlocks" EntityType="AlfariqDataContext.TrialBlock" />
+    <EntitySet Name="Trials" EntityType="AlfariqDataContext.Trial" />
+    <EntitySet Name="Words" EntityType="AlfariqDataContext.Word" />
+    <AssociationSet Name="FK_Sessions_ToFeedbackConditions" Association="AlfariqDataContext.FK_Sessions_ToFeedbackConditions">
+      <End Role="FeedbackConditions" EntitySet="FeedbackConditions" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_ToTParticipants" Association="AlfariqDataContext.FK_Sessions_ToTParticipants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialBlocks_ToSessions" Association="AlfariqDataContext.FK_TrialBlocks_ToSessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToTrialBlocks" Association="AlfariqDataContext.FK_Trials_ToTrialBlocks">
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords" Association="AlfariqDataContext.FK_Trials_ToWords">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Answer" Association="AlfariqDataContext.FK_Trials_ToWords_Answer">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt1" Association="AlfariqDataContext.FK_Trials_ToWords_Opt1">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt2" Association="AlfariqDataContext.FK_Trials_ToWords_Opt2">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trials_ToWords_Opt3" Association="AlfariqDataContext.FK_Trials_ToWords_Opt3">
+      <End Role="Words" EntitySet="Words" />
+      <End Role="Trials" EntitySet="Trials" />
+    </AssociationSet>
+    <AssociationSet Name="FailProfilesForTrialBlocks" Association="AlfariqDataContext.FailProfilesForTrialBlocks">
+      <End Role="Profiles" EntitySet="Profiles" />
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="PassProfilesForTrialBlocks" Association="AlfariqDataContext.PassProfilesForTrialBlocks">
+      <End Role="Profiles" EntitySet="Profiles" />
+      <End Role="TrialBlocks" EntitySet="TrialBlocks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="FeedbackCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Home" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Sessions" Relationship="AlfariqDataContext.FK_Sessions_ToTParticipants" FromRole="Participants" ToRole="Sessions" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Home" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FeedbackConditionID" Type="Int32" Nullable="false" />
+    <Property Name="ParticipantID" Type="Int32" />
+    <NavigationProperty Name="FeedbackCondition" Relationship="AlfariqDataContext.FK_Sessions_ToFeedbackConditions" FromRole="Sessions" ToRole="FeedbackConditions" />
+    <NavigationProperty Name="Participant" Relationship="AlfariqDataContext.FK_Sessions_ToTParticipants" FromRole="Sessions" ToRole="Participants" />
+    <NavigationProperty Name="TrialBlocks" Relationship="AlfariqDataContext.FK_TrialBlocks_ToSessions" FromRole="Sessions" ToRole="TrialBlocks" />
+  </EntityType>
+  <EntityType Name="TrialBlock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="IndexInSession" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Session" Relationship="AlfariqDataContext.FK_TrialBlocks_ToSessions" FromRole="TrialBlocks" ToRole="Sessions" />
+    <NavigationProperty Name="Trials" Relationship="AlfariqDataContext.FK_Trials_ToTrialBlocks" FromRole="TrialBlocks" ToRole="Trials" />
+    <NavigationProperty Name="FailProfiles" Relationship="AlfariqDataContext.FailProfilesForTrialBlocks" FromRole="TrialBlocks" ToRole="Profiles" />
+    <NavigationProperty Name="PassProfiles" Relationship="AlfariqDataContext.PassProfilesForTrialBlocks" FromRole="TrialBlocks" ToRole="Profiles" />
+  </EntityType>
+  <EntityType Name="Trial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="WordID" Type="Int32" Nullable="false" />
+    <Property Name="Option1ID" Type="Int32" Nullable="false" />
+    <Property Name="Option2ID" Type="Int32" Nullable="false" />
+    <Property Name="Option3ID" Type="Int32" Nullable="false" />
+    <Property Name="AnswerID" Type="Int32" />
+    <Property Name="Latency" Type="Int32" />
+    <Property Name="TrialBlockID" Type="Int32" Nullable="false" />
+    <Property Name="IndexInTrialBlock" Type="Int32" />
+    <NavigationProperty Name="TrialBlock" Relationship="AlfariqDataContext.FK_Trials_ToTrialBlocks" FromRole="Trials" ToRole="TrialBlocks" />
+    <NavigationProperty Name="Word" Relationship="AlfariqDataContext.FK_Trials_ToWords" FromRole="Trials" ToRole="Words" />
+    <NavigationProperty Name="Answer" Relationship="AlfariqDataContext.FK_Trials_ToWords_Answer" FromRole="Trials" ToRole="Words" />
+    <NavigationProperty Name="Option1" Relationship="AlfariqDataContext.FK_Trials_ToWords_Opt1" FromRole="Trials" ToRole="Words" />
+    <NavigationProperty Name="Option2" Relationship="AlfariqDataContext.FK_Trials_ToWords_Opt2" FromRole="Trials" ToRole="Words" />
+    <NavigationProperty Name="Option3" Relationship="AlfariqDataContext.FK_Trials_ToWords_Opt3" FromRole="Trials" ToRole="Words" />
+  </EntityType>
+  <EntityType Name="Word">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Arabic" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="English" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Sessions_ToFeedbackConditions">
+    <End Role="FeedbackConditions" Type="AlfariqDataContext.FeedbackCondition" Multiplicity="1" />
+    <End Role="Sessions" Type="AlfariqDataContext.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FeedbackConditions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="FeedbackConditionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_ToTParticipants">
+    <End Role="Participants" Type="AlfariqDataContext.Participant" Multiplicity="0..1" />
+    <End Role="Sessions" Type="AlfariqDataContext.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialBlocks_ToSessions">
+    <End Role="Sessions" Type="AlfariqDataContext.Session" Multiplicity="1" />
+    <End Role="TrialBlocks" Type="AlfariqDataContext.TrialBlock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrialBlocks">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToTrialBlocks">
+    <End Role="TrialBlocks" Type="AlfariqDataContext.TrialBlock" Multiplicity="1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialBlocks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="TrialBlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords">
+    <End Role="Words" Type="AlfariqDataContext.Word" Multiplicity="1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="WordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Answer">
+    <End Role="Words" Type="AlfariqDataContext.Word" Multiplicity="0..1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt1">
+    <End Role="Words" Type="AlfariqDataContext.Word" Multiplicity="1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option1ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt2">
+    <End Role="Words" Type="AlfariqDataContext.Word" Multiplicity="1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option2ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trials_ToWords_Opt3">
+    <End Role="Words" Type="AlfariqDataContext.Word" Multiplicity="1" />
+    <End Role="Trials" Type="AlfariqDataContext.Trial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Words">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trials">
+        <PropertyRef Name="Option3ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FailProfilesForTrialBlocks">
+    <End Role="Profiles" Type="AlfariqDataContext.Profile" Multiplicity="*" />
+    <End Role="TrialBlocks" Type="AlfariqDataContext.TrialBlock" Multiplicity="*" />
+  </Association>
+  <Association Name="PassProfilesForTrialBlocks">
+    <End Role="Profiles" Type="AlfariqDataContext.Profile" Multiplicity="*" />
+    <End Role="TrialBlocks" Type="AlfariqDataContext.TrialBlock" Multiplicity="*" />
+  </Association>
+</Schema>

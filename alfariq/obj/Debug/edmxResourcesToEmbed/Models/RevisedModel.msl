@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db38bab79d27554b96b50aa57c010cd149ModelStoreContainer" CdmEntityContainer="db38bab79d27554b96b50aa57c010cd149Entities3">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedbackConditions">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.FeedbackCondition">
+        <MappingFragment StoreEntitySet="FeedbackConditions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Participant">
+        <MappingFragment StoreEntitySet="Participants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Profile">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialBlocks">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.TrialBlock">
+        <MappingFragment StoreEntitySet="TrialBlocks">
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IndexInSession" ColumnName="IndexInSession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trials">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Trial">
+        <MappingFragment StoreEntitySet="Trials">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Latency" ColumnName="Latency" />
+          <ScalarProperty Name="IndexInTrialBlock" ColumnName="IndexInTrialBlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Words">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Word">
+        <MappingFragment StoreEntitySet="Words">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Arabic" ColumnName="Arabic" />
+          <ScalarProperty Name="English" ColumnName="English" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Sessions_ToFeedbackConditions" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Sessions_ToFeedbackConditions" StoreEntitySet="Sessions">
+      <EndProperty Name="FeedbackConditions">
+        <ScalarProperty Name="Id" ColumnName="FeedbackConditionID" />
+      </EndProperty>
+      <EndProperty Name="Sessions">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Sessions_ToTParticipants" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Sessions_ToTParticipants" StoreEntitySet="Sessions">
+      <EndProperty Name="Participants">
+        <ScalarProperty Name="Id" ColumnName="ParticipantID" />
+      </EndProperty>
+      <EndProperty Name="Sessions">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="ParticipantID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TrialBlocks_ToSessions" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_TrialBlocks_ToSessions" StoreEntitySet="TrialBlocks">
+      <EndProperty Name="Sessions">
+        <ScalarProperty Name="Id" ColumnName="SessionID" />
+      </EndProperty>
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToTrialBlocks" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToTrialBlocks" StoreEntitySet="Trials">
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="TrialBlockID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToWords" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords" StoreEntitySet="Trials">
+      <EndProperty Name="Words">
+        <ScalarProperty Name="Id" ColumnName="WordID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToWords_Answer" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Answer" StoreEntitySet="Trials">
+      <EndProperty Name="Words">
+        <ScalarProperty Name="Id" ColumnName="AnswerID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="AnswerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToWords_Opt1" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt1" StoreEntitySet="Trials">
+      <EndProperty Name="Words">
+        <ScalarProperty Name="Id" ColumnName="Option1ID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToWords_Opt2" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt2" StoreEntitySet="Trials">
+      <EndProperty Name="Words">
+        <ScalarProperty Name="Id" ColumnName="Option2ID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Trials_ToWords_Opt3" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt3" StoreEntitySet="Trials">
+      <EndProperty Name="Words">
+        <ScalarProperty Name="Id" ColumnName="Option3ID" />
+      </EndProperty>
+      <EndProperty Name="Trials">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FailProfilesForTrialBlocks" TypeName="db38bab79d27554b96b50aa57c010cd149Model.FailProfilesForTrialBlocks" StoreEntitySet="FailProfilesForTrialBlocks">
+      <EndProperty Name="Profiles">
+        <ScalarProperty Name="Id" ColumnName="ProfileID" />
+      </EndProperty>
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="TrialBlockID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PassProfilesForTrialBlocks" TypeName="db38bab79d27554b96b50aa57c010cd149Model.PassProfilesForTrialBlocks" StoreEntitySet="PassProfilesForTrialBlocks">
+      <EndProperty Name="Profiles">
+        <ScalarProperty Name="Id" ColumnName="ProfileID" />
+      </EndProperty>
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="TrialBlockID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

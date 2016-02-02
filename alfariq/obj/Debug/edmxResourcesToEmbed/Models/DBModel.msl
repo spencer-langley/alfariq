@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db38bab79d27554b96b50aa57c010cd149ModelStoreContainer" CdmEntityContainer="db38bab79d27554b96b50aa57c010cd149Entities1">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedbackConditions">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.FeedbackCondition">
+        <MappingFragment StoreEntitySet="FeedbackConditions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Participant">
+        <MappingFragment StoreEntitySet="Participants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Profile">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfilesForTrialBlocks">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.ProfilesForTrialBlock">
+        <MappingFragment StoreEntitySet="ProfilesForTrialBlocks">
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="TrialBlockID" ColumnName="TrialBlockID" />
+          <ScalarProperty Name="Succeed" ColumnName="Succeed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FeedbackConditionID" ColumnName="FeedbackConditionID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialBlocks">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.TrialBlock">
+        <MappingFragment StoreEntitySet="TrialBlocks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trials">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Trial">
+        <MappingFragment StoreEntitySet="Trials">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WordID" ColumnName="WordID" />
+          <ScalarProperty Name="OptionsPresentedTime" ColumnName="OptionsPresentedTime" />
+          <ScalarProperty Name="Option1ID" ColumnName="Option1ID" />
+          <ScalarProperty Name="Option2ID" ColumnName="Option2ID" />
+          <ScalarProperty Name="Option3ID" ColumnName="Option3ID" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
+          <ScalarProperty Name="TrialBlockID" ColumnName="TrialBlockID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Words">
+      <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Word">
+        <MappingFragment StoreEntitySet="Words">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Arabic" ColumnName="Arabic" />
+          <ScalarProperty Name="English" ColumnName="English" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

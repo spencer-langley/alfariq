@@ -1,0 +1,33 @@
+﻿@model alfariq.ViewModels.TrialBlockViewModel
+
+Trial Block @(Model.IndexInSession+1) <input type="hidden" id="@("tbid"+Model.IndexInSession)" value="@Model.ID" />
+<table border="1">
+<tr>
+    <td colspan="4"><center>Profiles</center></td>
+</tr>
+@foreach (var profile in Model.ProfileOptions)
+{
+    bool markPass = Model.ProfilesIDsToPass.Contains(Int32.Parse(profile.Value));
+    bool markFail = Model.ProfilesIDsToFail.Contains(Int32.Parse(profile.Value));
+    bool markExclude = !markPass && !markFail;
+    string buttonName = "tb" + Model.IndexInSession + "-" + profile.Value;
+    string passClass = "passIDs" + Model.IndexInSession;
+    string failClass = "failIDs" + Model.IndexInSession;
+    <tr>
+        <td>
+            @profile.Text
+        </td>
+        <td>
+            <input type="radio" value="@profile.Value" @if(markPass){ <text>checked="checked"</text> } class="@passClass" name="@buttonName"/>Pass
+        </td>
+    
+        <td>
+            <input type="radio" value="@profile.Value" @if(markFail){ <text>checked="checked"</text> } class="@failClass" name="@buttonName"/>Fail
+        </td>
+    
+        <td>
+            <input type="radio" value="@profile.Value" @if(markExclude){ <text>checked="checked"</text> } name="@buttonName"/>Exclude
+        </td>
+     </tr>
+}
+</table>

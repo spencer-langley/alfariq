@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AlfariqDataContextStoreContainer" CdmEntityContainer="db38bab79d27554b96b50aa57c010cd149Entities2">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedbackConditions">
+      <EntityTypeMapping TypeName="AlfariqDataContext.FeedbackCondition">
+        <MappingFragment StoreEntitySet="FeedbackConditions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Participant">
+        <MappingFragment StoreEntitySet="Participants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Profile">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Home" ColumnName="Home" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FeedbackConditionID" ColumnName="FeedbackConditionID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialBlocks">
+      <EntityTypeMapping TypeName="AlfariqDataContext.TrialBlock">
+        <MappingFragment StoreEntitySet="TrialBlocks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="IndexInSession" ColumnName="IndexInSession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trials">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Trial">
+        <MappingFragment StoreEntitySet="Trials">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WordID" ColumnName="WordID" />
+          <ScalarProperty Name="Option1ID" ColumnName="Option1ID" />
+          <ScalarProperty Name="Option2ID" ColumnName="Option2ID" />
+          <ScalarProperty Name="Option3ID" ColumnName="Option3ID" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="Latency" ColumnName="Latency" />
+          <ScalarProperty Name="TrialBlockID" ColumnName="TrialBlockID" />
+          <ScalarProperty Name="IndexInTrialBlock" ColumnName="IndexInTrialBlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Words">
+      <EntityTypeMapping TypeName="AlfariqDataContext.Word">
+        <MappingFragment StoreEntitySet="Words">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Arabic" ColumnName="Arabic" />
+          <ScalarProperty Name="English" ColumnName="English" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FailProfilesForTrialBlocks" TypeName="AlfariqDataContext.FailProfilesForTrialBlocks" StoreEntitySet="FailProfilesForTrialBlocks">
+      <EndProperty Name="Profiles">
+        <ScalarProperty Name="Id" ColumnName="ProfileID" />
+      </EndProperty>
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="TrialBlockID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PassProfilesForTrialBlocks" TypeName="AlfariqDataContext.PassProfilesForTrialBlocks" StoreEntitySet="PassProfilesForTrialBlocks">
+      <EndProperty Name="Profiles">
+        <ScalarProperty Name="Id" ColumnName="ProfileID" />
+      </EndProperty>
+      <EndProperty Name="TrialBlocks">
+        <ScalarProperty Name="Id" ColumnName="TrialBlockID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,63 @@
+﻿@model alfariq.ViewModels.ConductSessionViewModel
+<script src="/Scripts/jquery-1.8.2.min.js"></script>
+<script src="/Scripts/session.js"></script>
+<div id="blockIntroScreen" class="userPanel DisplayScreen">
+	<div id="blockIntroMessage"></div>
+	<br />
+    <br />
+	<button id="BeginTrialBlockButton">Click to begin</button>
+</div>
+<br />
+<div id="TrialCounterContainer" style="overflow-y: auto; overflow-x: hidden; height: 65%;">
+</div>
+<br />
+<div id="CountdownContainer" style="overflow-y: auto; overflow-x: hidden; height: 65%;">
+</div>
+<br />
+<div id="TrialScreen" class="startHide userPanel DisplayScreen" style="overflow-y: auto; overflow-x: hidden; height: 65%;">
+</div>
+<div id="OptionsScreen" class="startHide userPanel DisplayScreen">
+	<div id="OptionsWrapper">
+		<button id="Option1" class="OptionContainer"></button>
+		<button id="Option2" class="OptionContainer"></button>
+		<button id="Option3" class="OptionContainer"></button>
+	</div>
+</div>
+<div id="BlockEndScreen" class="startHide userPanel DisplayScreen">
+	<div id="BlockEndScreenMessage"></div>
+	<button id="BlockEndButton">Continue</button>
+</div>
+<div class="startHide">
+    <input type="hidden" id="sessionID" value="@Model.Id" />
+    <input type="hidden" id="feedbackCondition" value="@Model.FeedbackCondition" />
+    <input type="hidden" id="EndOfSessionMessage" value="The session has ended.  Thank you.  You earned a total bonus of $" />
+
+    <input type="hidden" id="NMP-single-tbintro" value="You have been placed in a group of {0} members in this trial block. If you and the other group member meet the goal of making {1} correct responses before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. To meet the goal and earn a bonus, every member of the group must make {1} correct responses before the end of the trial block. At the end of the trial block, you and the other group member will find out if you’ve earned a bonus." />
+    <input type="hidden" id="NMP-plural-tbintro" value="You have been placed in a group of {0} members in this trial block. If you and the other group members meet the goal of making {1} correct responses before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. To meet the goal and earn a bonus, every member of the group must make {1} correct responses before the end of the trial block. At the end of the trial block, you and the other group members will find out if you’ve earned a bonus." />
+    <input type="hidden" id="MP-single-tbintro" value="You have been placed in a group of {0} members in this trial block. In a moment, you will see some information about the other group member on your screen. If you and the other group member meet the goal of making {1} correct responses before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. To meet the goal and earn a bonus, every member of the group must make {1} correct responses before the end of the trial block. At the end of the trial block, you and the other group member will find out if you’ve earned a bonus." />
+    <input type="hidden" id="MP-plural-tbintro" value="You have been placed in a group of {0} members in this trial block. In a moment, you will see some information about the other group member on your screen. If you and the other group member meet the goal of making {1} selections before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. To meet the goal and earn a bonus, every member of the group must make {1} correct responses before the end of the trial block. At the end of the trial block, you and the other group members will find out if you’ve earned a bonus." />
+    <input type="hidden" id="MPSF-single-tbintro" value="You have been placed in a group of {0} members in this trial block. In a moment, you will see some information about the other group member on your screen. If you and the other group member meet the goal of making {1} selections before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. This means you must make at least {1} correct responses to meet your individual goal. At the end of the trial block, you and the other group member will find out if you’ve earned a bonus." />
+    <input type="hidden" id="MPSF-plural-tbintro" value="You have been placed in a group of {0} members in this trial block. In a moment, you will see some information about the other group member on your screen. If you and the other group member meet the goal of making {1} selections before the end of the trial block, each one of you will earn a bonus. Bonuses may be exchanged for money at the end of the session. To meet the goal and earn a bonus, every member of the group must make {1} correct responses before the end of the trial block. At the end of the trial block, you and the other group members will find out if you’ve earned a bonus." />
+    <input type="hidden" id="allWords" value="@Html.Raw(Model.WordsJson)" />
+    <input type="hidden" id="allProfiles" value="@Html.Raw(Model.ProfilesJson)" />
+    @foreach (var tb in Model.TrialBlocks)
+    {
+        string tbPassIdKey = "tb-" + tb.IndexInSession + "-passIDs";
+        string tbFailIdKey = "tb-" + tb.IndexInSession + "-failIDs";
+        List<int> tbPassIdValues = new List<int>();
+        List<int> tbFailIdValues = new List<int>();
+        
+        foreach(var pass in tb.Passes)
+        {
+            tbPassIdValues.Add(pass.Id);
+        }
+        foreach (var fail in tb.Fails)
+        {
+            tbFailIdValues.Add(fail.Id);
+        }
+        
+        <input type="hidden" id="@tbPassIdKey" value="@string.Join(",",tbPassIdValues)" />
+        <input type="hidden" id="@tbFailIdKey" value="@string.Join(",",tbFailIdValues)" />
+        
+    }
+</div>

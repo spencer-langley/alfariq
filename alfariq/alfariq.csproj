@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -181,14 +183,62 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedbackCondition.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Participant.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profile.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RevisedModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RevisedModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RevisedModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RevisedModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RevisedModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Session.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trial.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrialBlock.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Word.cs">
+      <DependentUpon>RevisedModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AjaxResponse.cs" />
+    <Compile Include="ViewModels\CompletedSessionAjaxViewModel.cs" />
+    <Compile Include="ViewModels\CompletedSessionViewModel.cs" />
+    <Compile Include="ViewModels\ConductSessionViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantWelcomeViewModel.cs" />
+    <Compile Include="ViewModels\Shared\DropdownOption.cs" />
+    <Compile Include="ViewModels\Shared\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\SessionPreviewModel.cs" />
+    <Compile Include="ViewModels\SessionViewModel.cs" />
+    <Compile Include="ViewModels\TrialBlockViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -247,6 +297,166 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\RevisedModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RevisedModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Images\Participants\bill.jpg" />
+    <Content Include="Images\Participants\ted.jpg" />
+    <Content Include="Images\Profiles\1.jpg" />
+    <Content Include="Images\Profiles\10.jpg" />
+    <Content Include="Images\Profiles\100.jpg" />
+    <Content Include="Images\Profiles\101.jpg" />
+    <Content Include="Images\Profiles\102.jpg" />
+    <Content Include="Images\Profiles\103.jpg" />
+    <Content Include="Images\Profiles\104.jpg" />
+    <Content Include="Images\Profiles\105.jpg" />
+    <Content Include="Images\Profiles\106.jpg" />
+    <Content Include="Images\Profiles\107.jpg" />
+    <Content Include="Images\Profiles\108.jpg" />
+    <Content Include="Images\Profiles\109.jpg" />
+    <Content Include="Images\Profiles\11.jpg" />
+    <Content Include="Images\Profiles\110.jpg" />
+    <Content Include="Images\Profiles\111.jpg" />
+    <Content Include="Images\Profiles\112.jpg" />
+    <Content Include="Images\Profiles\113.jpg" />
+    <Content Include="Images\Profiles\114.jpg" />
+    <Content Include="Images\Profiles\115.jpg" />
+    <Content Include="Images\Profiles\116.jpg" />
+    <Content Include="Images\Profiles\117.jpg" />
+    <Content Include="Images\Profiles\118.jpg" />
+    <Content Include="Images\Profiles\119.jpg" />
+    <Content Include="Images\Profiles\12.jpg" />
+    <Content Include="Images\Profiles\120.jpg" />
+    <Content Include="Images\Profiles\121.jpg" />
+    <Content Include="Images\Profiles\122.jpg" />
+    <Content Include="Images\Profiles\123.jpg" />
+    <Content Include="Images\Profiles\124.jpg" />
+    <Content Include="Images\Profiles\125.jpg" />
+    <Content Include="Images\Profiles\126.jpg" />
+    <Content Include="Images\Profiles\127.jpg" />
+    <Content Include="Images\Profiles\128.jpg" />
+    <Content Include="Images\Profiles\129.jpg" />
+    <Content Include="Images\Profiles\13.jpg" />
+    <Content Include="Images\Profiles\130.jpg" />
+    <Content Include="Images\Profiles\131.jpg" />
+    <Content Include="Images\Profiles\132.jpg" />
+    <Content Include="Images\Profiles\133.jpg" />
+    <Content Include="Images\Profiles\134.jpg" />
+    <Content Include="Images\Profiles\135.jpg" />
+    <Content Include="Images\Profiles\136.jpg" />
+    <Content Include="Images\Profiles\137.jpg" />
+    <Content Include="Images\Profiles\138.jpg" />
+    <Content Include="Images\Profiles\139.jpg" />
+    <Content Include="Images\Profiles\14.jpg" />
+    <Content Include="Images\Profiles\140.jpg" />
+    <Content Include="Images\Profiles\141.jpg" />
+    <Content Include="Images\Profiles\15.jpg" />
+    <Content Include="Images\Profiles\16.jpg" />
+    <Content Include="Images\Profiles\17.jpg" />
+    <Content Include="Images\Profiles\18.jpg" />
+    <Content Include="Images\Profiles\19.jpg" />
+    <Content Include="Images\Profiles\2.jpg" />
+    <Content Include="Images\Profiles\20.jpg" />
+    <Content Include="Images\Profiles\21.jpg" />
+    <Content Include="Images\Profiles\22.jpg" />
+    <Content Include="Images\Profiles\23.jpg" />
+    <Content Include="Images\Profiles\24.jpg" />
+    <Content Include="Images\Profiles\25.jpg" />
+    <Content Include="Images\Profiles\26.jpg" />
+    <Content Include="Images\Profiles\27.jpg" />
+    <Content Include="Images\Profiles\28.jpg" />
+    <Content Include="Images\Profiles\29.jpg" />
+    <Content Include="Images\Profiles\3.jpg" />
+    <Content Include="Images\Profiles\30.jpg" />
+    <Content Include="Images\Profiles\31.jpg" />
+    <Content Include="Images\Profiles\32.jpg" />
+    <Content Include="Images\Profiles\33.jpg" />
+    <Content Include="Images\Profiles\34.jpg" />
+    <Content Include="Images\Profiles\35.jpg" />
+    <Content Include="Images\Profiles\36.jpg" />
+    <Content Include="Images\Profiles\37.jpg" />
+    <Content Include="Images\Profiles\38.jpg" />
+    <Content Include="Images\Profiles\39.jpg" />
+    <Content Include="Images\Profiles\4.jpg" />
+    <Content Include="Images\Profiles\40.jpg" />
+    <Content Include="Images\Profiles\41.jpg" />
+    <Content Include="Images\Profiles\42.jpg" />
+    <Content Include="Images\Profiles\43.jpg" />
+    <Content Include="Images\Profiles\44.jpg" />
+    <Content Include="Images\Profiles\45.jpg" />
+    <Content Include="Images\Profiles\46.jpg" />
+    <Content Include="Images\Profiles\47.jpg" />
+    <Content Include="Images\Profiles\48.jpg" />
+    <Content Include="Images\Profiles\49.jpg" />
+    <Content Include="Images\Profiles\5.jpg" />
+    <Content Include="Images\Profiles\50.jpg" />
+    <Content Include="Images\Profiles\51.jpg" />
+    <Content Include="Images\Profiles\52.jpg" />
+    <Content Include="Images\Profiles\53.jpg" />
+    <Content Include="Images\Profiles\54.jpg" />
+    <Content Include="Images\Profiles\55.jpg" />
+    <Content Include="Images\Profiles\56.jpg" />
+    <Content Include="Images\Profiles\57.jpg" />
+    <Content Include="Images\Profiles\58.jpg" />
+    <Content Include="Images\Profiles\59.jpg" />
+    <Content Include="Images\Profiles\6.jpg" />
+    <Content Include="Images\Profiles\60.jpg" />
+    <Content Include="Images\Profiles\61.jpg" />
+    <Content Include="Images\Profiles\62.jpg" />
+    <Content Include="Images\Profiles\63.jpg" />
+    <Content Include="Images\Profiles\64.jpg" />
+    <Content Include="Images\Profiles\65.jpg" />
+    <Content Include="Images\Profiles\66.jpg" />
+    <Content Include="Images\Profiles\67.jpg" />
+    <Content Include="Images\Profiles\68.jpg" />
+    <Content Include="Images\Profiles\69.jpg" />
+    <Content Include="Images\Profiles\7.jpg" />
+    <Content Include="Images\Profiles\70.jpg" />
+    <Content Include="Images\Profiles\71.jpg" />
+    <Content Include="Images\Profiles\72.jpg" />
+    <Content Include="Images\Profiles\73.jpg" />
+    <Content Include="Images\Profiles\74.jpg" />
+    <Content Include="Images\Profiles\75.jpg" />
+    <Content Include="Images\Profiles\76.jpg" />
+    <Content Include="Images\Profiles\77.jpg" />
+    <Content Include="Images\Profiles\78.jpg" />
+    <Content Include="Images\Profiles\79.jpg" />
+    <Content Include="Images\Profiles\8.jpg" />
+    <Content Include="Images\Profiles\80.jpg" />
+    <Content Include="Images\Profiles\81.jpg" />
+    <Content Include="Images\Profiles\82.jpg" />
+    <Content Include="Images\Profiles\83.jpg" />
+    <Content Include="Images\Profiles\84.jpg" />
+    <Content Include="Images\Profiles\85.jpg" />
+    <Content Include="Images\Profiles\86.jpg" />
+    <Content Include="Images\Profiles\87.jpg" />
+    <Content Include="Images\Profiles\88.jpg" />
+    <Content Include="Images\Profiles\89.jpg" />
+    <Content Include="Images\Profiles\9.jpg" />
+    <Content Include="Images\Profiles\90.jpg" />
+    <Content Include="Images\Profiles\91.jpg" />
+    <Content Include="Images\Profiles\92.jpg" />
+    <Content Include="Images\Profiles\93.jpg" />
+    <Content Include="Images\Profiles\94.jpg" />
+    <Content Include="Images\Profiles\95.jpg" />
+    <Content Include="Images\Profiles\96.jpg" />
+    <Content Include="Images\Profiles\97.jpg" />
+    <Content Include="Images\Profiles\98.jpg" />
+    <Content Include="Images\Profiles\99.jpg" />
+    <Content Include="Models\RevisedModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RevisedModel.edmx</DependentUpon>
+      <LastGenOutput>RevisedModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RevisedModel.edmx.diagram">
+      <DependentUpon>RevisedModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\RevisedModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RevisedModel.edmx</DependentUpon>
+      <LastGenOutput>RevisedModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -262,6 +472,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\session.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -285,28 +496,28 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\EditSession.cshtml" />
+    <Content Include="Views\Admin\_TrialBlockEdit.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Home\RunSession.cshtml" />
+    <Content Include="Views\Admin\ViewSessionData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

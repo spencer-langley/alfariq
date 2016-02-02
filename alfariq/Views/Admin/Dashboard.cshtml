@@ -1,0 +1,17 @@
+﻿@model alfariq.ViewModels.DashboardViewModel
+
+<h3>Dashboard</h3>
+<a href="/Admin/EditSession">Create New Session</a>
+<h3>Edit Pending Sessions</h3>
+@foreach (var session in Model.PendingSessions)
+{
+    <a href="/Admin/EditSession/?sessionID=@session.Id">@session.Name</a>
+    <br />
+}
+<br />
+<h3>Completed Sessions</h3>
+@foreach (var session in Model.CompletedSessions)
+{
+    <a href="/Admin/ViewSessionData/?sessionID=@session.Id">@session.Name</a>
+    <br />
+}

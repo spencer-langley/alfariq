@@ -1,0 +1,86 @@
+﻿@model alfariq.ViewModels.SessionViewModel
+<input type="hidden" value="@Model.SessionID" id="sessionID" />
+Session name: <input type="text" size="15" id="sessionName" value="@Model.Name" />
+<br />
+<br />
+Feedback Condition:
+<select id="feedbackSelection">
+    <option> </option>
+    @foreach(var option in Model.FeedbackOptions)
+    {
+        <option value="@option.Value" @if(option.DefaultSelected) { <text>selected</text> }>@option.Text</option>
+    }
+</select>
+<br />
+<br />
+Participant:
+<select id="partSelection">
+    <option> </option>
+    @foreach(var option in Model.ParticipantOptions)
+    {
+        <option value="@option.Value" @if(option.DefaultSelected) { <text>selected</text> }>@option.Text</option>
+    }
+</select>
+@foreach(var block in Model.TrialBlocks)
+{
+<br />
+<br />
+    @Html.Partial("_TrialBlockEdit", block);
+}
+<button id="CreateButton" onclick="submitForm()">Save Session</button>
+<div id="errorMessages"></div>
+<script>
+    function submitForm() {
+
+        var tbArray = [];
+        var tbCount = @Model.TrialBlocks.Count;
+
+        for(var i = 0; i < tbCount; i++) {
+            tbArray.push(buildTrialBlockObject(i));
+        }
+
+        var model = {
+            "Name": $('#sessionName').val(),
+            "FeedbackModeID": $('#feedbackSelection').val(),
+            "ParticipantID": $('#partSelection').val(),
+            "SessionID" : $('#sessionID').val(),
+            "TrialBlocks": tbArray
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/UpdateSession',
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //var response = JSON.parse(data);
+                var response = data;
+                console.log('Receieved and processing reply: ' + response);
+                if (response.Success == true) {
+                    window.location.href = '/admin/dashboard/';
+                }
+                else {
+                    $("#errorMessages").text(response.Message);
+                }
+        },
+        });
+    }
+    function buildTrialBlockObject(index) {
+
+        var block = { "ProfilesIDsToPass" : [], "ProfilesIDsToFail": [], "IndexInSession": index, "ID" : $("#tbid"+index).val() };
+
+        var passSelector = ".passIDs" + index;
+        var failSelector = ".failIDs" + index;
+        
+        console.log("TB: " + index + " passes:");
+        $(passSelector).each(function () { if ($(this).is(':checked')) { console.log($(this).val()) } });
+        console.log("TB: " + index + " fails:");
+        $(failSelector).each(function () { if ($(this).is(':checked')) { console.log($(this).val()) } });
+
+        $(passSelector).each(function () { if ($(this).is(':checked')) { block.ProfilesIDsToPass.push($(this).val()) } });
+        $(failSelector).each(function () { if ($(this).is(':checked')) { block.ProfilesIDsToFail.push($(this).val()) } });
+
+        return block;
+    }
+</script>

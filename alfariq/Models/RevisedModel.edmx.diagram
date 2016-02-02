@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b509c8645b74e3eb1dd47aa82553897" Name="Diagram1">
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Admin" Width="1.5" PointX="5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.FeedbackCondition" Width="1.5" PointX="7.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Participant" Width="1.5" PointX="2.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Profile" Width="1.5" PointX="6.875" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Session" Width="1.5" PointX="5.125" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.TrialBlock" Width="1.5" PointX="0.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Trial" Width="1.5" PointX="0.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db38bab79d27554b96b50aa57c010cd149Model.Word" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Sessions_ToFeedbackConditions" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Sessions_ToTParticipants" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_TrialBlocks_ToSessions" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToTrialBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt1" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt2" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FK_Trials_ToWords_Opt3" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.FailProfilesForTrialBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="db38bab79d27554b96b50aa57c010cd149Model.PassProfilesForTrialBlocks" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
