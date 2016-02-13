@@ -91,6 +91,7 @@ namespace alfariq.Controllers
                 }
                 return Json(ProcessSessionRequest(completedSession));
             }
+            reply.Message = "User \"" + sessionUser + "\"not found.";
             return Json(reply);
         }
 
