@@ -191,7 +191,8 @@ $(function () {
 	    var submitData =
             {
                 "TrialBlocks": CompletedTrialBlocks,
-                "SessionId" : $("#sessionID").val()
+                "SessionId": $("#sessionID").val(),
+                "Username": $("#userName").val()
             }
 
 	    $.ajax({

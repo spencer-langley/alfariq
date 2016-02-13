@@ -11,15 +11,17 @@ namespace alfariq.ViewModels
     {
         public int Id { get; set; }
         public string FeedbackCondition { get; set; }
+        public string Username { get; set; }
         public List<ConductTrialBlockViewModel> TrialBlocks { get; set; }
         public string ProfilesJson { get; set; }
         public string WordsJson { get; set; }
 
-        public ConductSessionViewModel(Session s, IEnumerable<Word> words, IEnumerable<Profile> profiles)
+        public ConductSessionViewModel(Session s, IEnumerable<Word> words, IEnumerable<Profile> profiles, string userName)
         {
             TrialBlocks = new List<ConductTrialBlockViewModel>();
             var AllProfiles = new List<ProfileViewModel>();
             Id = s.Id;
+            Username = userName;
             FeedbackCondition = s.FeedbackCondition.Name;
             foreach (var block in s.TrialBlocks)
             {
@@ -42,6 +44,7 @@ namespace alfariq.ViewModels
         public int IndexInSession { get; set; }
         public List<ProfileViewModel> Fails { get; set; }
         public List<ProfileViewModel> Passes { get; set; }
+        
 
         public ConductTrialBlockViewModel(TrialBlock tb)
         {

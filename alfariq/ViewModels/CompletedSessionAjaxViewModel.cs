@@ -10,6 +10,7 @@ namespace alfariq.ViewModels
     {
         public CompletedTrialBlockAjaxViewModel[] TrialBlocks { get; set; }
         public int SessionId { get; set; }
+        public string Username { get; set; }
     }
 
     public class CompletedTrialBlockAjaxViewModel

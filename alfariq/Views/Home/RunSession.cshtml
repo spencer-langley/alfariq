@@ -28,6 +28,7 @@
 	<button id="BlockEndButton">Continue</button>
 </div>
 <div class="startHide">
+    <input type="hidden" id="userName" value="@Model.Username" />
     <input type="hidden" id="sessionID" value="@Model.Id" />
     <input type="hidden" id="feedbackCondition" value="@Model.FeedbackCondition" />
     <input type="hidden" id="EndOfSessionMessage" value="The session has ended.  Thank you.  You earned a total bonus of $" />

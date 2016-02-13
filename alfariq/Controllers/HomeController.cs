@@ -59,7 +59,7 @@ namespace alfariq.Controllers
             if (dbUser != null)
             {
                 var sessionRecord = entities.Sessions.Where(x => x.Id == sessionID).SingleOrDefault();
-                return View("RunSession", new ConductSessionViewModel(sessionRecord, entities.Words, entities.Profiles));
+                return View("RunSession", new ConductSessionViewModel(sessionRecord, entities.Words, entities.Profiles, dbUser.Username));
             }
             return Index();
         }
@@ -73,7 +73,7 @@ namespace alfariq.Controllers
             reply.Message = "Nothing happened";
 
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
-            var sessionUser = (string)Session["User"];
+            var sessionUser = completedSession.Username;
             var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
             if (dbUser != null)
             {
