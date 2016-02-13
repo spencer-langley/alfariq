@@ -11,17 +11,9 @@ namespace alfariq.Controllers
 {
     public class HomeController : Controller
     {
-        Dictionary<string, string> partPasswordsByUsername;
 
         public HomeController()
-        {
-            var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
-            partPasswordsByUsername = new Dictionary<string, string>();
-            foreach (var part in entities.Participants)
-            {
-                partPasswordsByUsername.Add(part.Username, part.Password);
-            }
-        }
+        { }
 
         [HttpGet]
         public ActionResult Index()
@@ -33,10 +25,15 @@ namespace alfariq.Controllers
         [AllowAnonymous]
         public ActionResult Index(LoginModel credentials)
         {
-            if (credentials != null && partPasswordsByUsername.ContainsKey(credentials.Username) && partPasswordsByUsername[credentials.Username] == credentials.Password)
+            var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
+            if (credentials != null)
             {
-                Session["User"] = credentials.Username;
-                return Welcome();
+                var dbUser = entities.Participants.Where(x => x.Username == credentials.Username && x.Password == credentials.Password).SingleOrDefault();
+                if (dbUser != null)
+                {
+                    Session["User"] = credentials.Username;
+                    return Welcome();
+                }
             }
             credentials.Message = "Invalid login";
             return View(credentials);
@@ -46,10 +43,10 @@ namespace alfariq.Controllers
         {
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
             var sessionUser = (string)Session["User"];
-            if (sessionUser != null && partPasswordsByUsername.ContainsKey(sessionUser))
+            var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
+            if (dbUser != null)
             {
-                var participant = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
-                return View("Welcome", new ParticipantWelcomeViewModel(participant));
+                return View("Welcome", new ParticipantWelcomeViewModel(dbUser));
             }
             return Index();
         }
@@ -58,7 +55,8 @@ namespace alfariq.Controllers
         {
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
             var sessionUser = (string)Session["User"];
-            if (sessionUser != null && partPasswordsByUsername.ContainsKey(sessionUser))
+            var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
+            if (dbUser != null)
             {
                 var sessionRecord = entities.Sessions.Where(x => x.Id == sessionID).SingleOrDefault();
                 return View("RunSession", new ConductSessionViewModel(sessionRecord, entities.Words, entities.Profiles));
@@ -76,7 +74,8 @@ namespace alfariq.Controllers
 
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
             var sessionUser = (string)Session["User"];
-            if (sessionUser != null && partPasswordsByUsername.ContainsKey(sessionUser))
+            var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
+            if (dbUser != null)
             {
                 var sessionRecord = entities.Sessions.Where(x => x.Id == completedSession.SessionId).SingleOrDefault();
 
