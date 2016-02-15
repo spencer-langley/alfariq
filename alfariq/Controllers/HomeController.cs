@@ -73,10 +73,10 @@ namespace alfariq.Controllers
             reply.Message = "Nothing happened";
 
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
-            var sessionUser = completedSession.Username;
-            var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
-            if (dbUser != null)
-            {
+            //var sessionUser = completedSession.Username;
+            //var dbUser = entities.Participants.Where(x => x.Username == sessionUser).SingleOrDefault();
+            //if (dbUser != null)
+            //{
                 var sessionRecord = entities.Sessions.Where(x => x.Id == completedSession.SessionId).SingleOrDefault();
 
                 if (sessionRecord == null)
@@ -84,15 +84,15 @@ namespace alfariq.Controllers
                     reply.Message = "Session ID not found";
                     return Json(reply);
                 }
-                if (sessionRecord.Participant.Username != sessionUser)
-                {
-                    reply.Message = "Requested session not affliated with user";
-                    return Json(reply);
-                }
+                //if (sessionRecord.Participant.Username != sessionUser)
+                //{
+                //    reply.Message = "Requested session not affliated with user";
+                //    return Json(reply);
+                //}
                 return Json(ProcessSessionRequest(completedSession));
-            }
-            reply.Message = "User \"" + sessionUser + "\"not found.";
-            return Json(reply);
+            //}
+            //reply.Message = "User \"" + sessionUser + "\"not found.";
+            //return Json(reply);
         }
 
         private AjaxResponse ProcessSessionRequest(CompletedSessionAjaxViewModel completedSession)
