@@ -59,7 +59,7 @@ namespace alfariq.Controllers
             if (dbUser != null)
             {
                 var sessionRecord = entities.Sessions.Where(x => x.Id == sessionID).SingleOrDefault();
-                return View("RunSession", new ConductSessionViewModel(sessionRecord, entities.Words, entities.Profiles, dbUser.Username));
+                return View("RunSession", new ConductSessionViewModel(sessionRecord, entities.Words.Where(x => x.ListId == sessionRecord.WordListId), entities.Profiles, dbUser.Username));
             }
             return Index();
         }

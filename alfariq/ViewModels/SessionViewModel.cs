@@ -9,6 +9,8 @@ namespace alfariq.ViewModels
 {
     public class SessionViewModel
     {
+        public int WordListId { get; set; }
+
         public string SessionID { get; set; }
 
         public string Name { get; set; }
@@ -53,6 +55,7 @@ namespace alfariq.ViewModels
             TrialBlocks = new List<TrialBlockViewModel>();
             if (setValues)
             {
+                WordListId = existingSession.WordListId ?? 0;
                 SessionID = existingSession.Id.ToString();
                 Name = existingSession.Name;
                 foreach (var block in existingSession.TrialBlocks)

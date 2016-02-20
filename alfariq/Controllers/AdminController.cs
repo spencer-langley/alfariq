@@ -1,6 +1,7 @@
 ﻿using alfariq.Models;
 using alfariq.ViewModels;
 using alfariq.ViewModels.Shared;
+//using LinqToExcel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,32 +96,33 @@ namespace alfariq.Controllers
 
         //[HttpPost]
         //[AllowAnonymous]
-        //public ActionResult ImportProfiles(ProfileImportRequest request)
+        //public ActionResult ImportWords()
         //{
         //    var entities = new db38bab79d27554b96b50aa57c010cd149Entities3();
 
+        //    string pathToExcelFile = ""
+        //+ @"D:\Words.xls";
+
+        //    string[] SheetNames = new string[] { "Session 1, 7", "Session 2, 8", "Session 3, 9", "Session 4, 10", "Session 5, 11", "Session 6, 12" };
+
         //    string[] stringSeparators = new string[] { ", " };
 
-        //    foreach (var w in request.profiles)
+        //    var excelFile = new ExcelQueryFactory(pathToExcelFile);
+
+        //    for (int i = 0; i < SheetNames.Length; i++ )
         //    {
-        //        var newProfile = new Profile();
+        //        var sheetName = SheetNames[i];
+        //        var rows = from a in excelFile.Worksheet(sheetName) select a;
 
-        //        var nameParts = w.name.Split(stringSeparators, StringSplitOptions.None);
-
-        //        var ageParts = nameParts[1].Split(" ".ToCharArray());
-        //        var home = nameParts[2].Replace("lives in ", string.Empty);
-
-        //        newProfile.Name = nameParts[0];
-        //        newProfile.Age = Int32.Parse(ageParts[0]);
-        //        newProfile.Home = home;
-
-        //        newProfile.ImagePath = "x";
-
-        //        entities.Profiles.Add(newProfile);
-        //        entities.SaveChanges();
-
-        //        newProfile.ImagePath = "/Images/Profiles/" + newProfile.Id + ".jpg";
-        //        entities.SaveChanges();
+        //        foreach (var r in rows)
+        //        {
+        //            var word = new Word();
+        //            word.Arabic = r["Arabic"];
+        //            word.English = r["English"];
+        //            word.ListId = i;
+        //            entities.Words.Add(word);
+        //            entities.SaveChanges();
+        //        }
         //    }
 
         //    AjaxResponse response = new AjaxResponse();
@@ -128,17 +130,6 @@ namespace alfariq.Controllers
         //    response.Message = "It worked.";
 
         //    return Json(response);
-        //}
-
-        //public class ProfileImportRequest
-        //{
-        //    public List<ProfileRequest> profiles { get; set; }
-        //}
-
-        //public class ProfileRequest
-        //{
-        //    public string name { get; set; }
-        //    public string image { get; set; }
         //}
 
         public ActionResult UpdateSession(SessionViewModel form)

@@ -126,6 +126,7 @@
     <Property Name="FeedbackConditionID" Type="int" Nullable="false" />
     <Property Name="ParticipantID" Type="int" />
     <Property Name="Completed" Type="bit" Nullable="false" />
+    <Property Name="WordListId" Type="int" />
   </EntityType>
   <EntityType Name="TrialBlocks">
     <Key>
@@ -158,6 +159,7 @@
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Arabic" Type="nvarchar(max)" Nullable="false" />
     <Property Name="English" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ListId" Type="int" />
   </EntityType>
   <Association Name="FK_PassProfilesForTrialBlocks_ToProfiles">
     <End Role="Profiles" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Profiles" Multiplicity="1" />

@@ -3,6 +3,13 @@
 Session name: <input type="text" size="15" id="sessionName" value="@Model.Name" />
 <br />
 <br />
+Work List ID:
+<select id="wordListSelection">
+    @for (int i = 0; i < 6; i++ )
+    {
+        <option value="@i" @if(i == Model.WordListId) { <text>selected</text> }>@i</option>
+    }
+</select>
 Feedback Condition:
 <select id="feedbackSelection">
     <option> </option>
@@ -41,6 +48,7 @@ Participant:
 
         var model = {
             "Name": $('#sessionName').val(),
+            "WordListId": $('#wordListSelection').val(),
             "FeedbackModeID": $('#feedbackSelection').val(),
             "ParticipantID": $('#partSelection').val(),
             "SessionID" : $('#sessionID').val(),

@@ -22,6 +22,7 @@ namespace alfariq.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Completed { get; set; }
+        public Nullable<int> WordListId { get; set; }
     
         public virtual FeedbackCondition FeedbackCondition { get; set; }
         public virtual Participant Participant { get; set; }

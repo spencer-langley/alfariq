@@ -45,6 +45,7 @@
     <EntitySetMapping Name="Sessions">
       <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Session">
         <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="WordListId" ColumnName="WordListId" />
           <ScalarProperty Name="Completed" ColumnName="Completed" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -73,6 +74,7 @@
     <EntitySetMapping Name="Words">
       <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Word">
         <MappingFragment StoreEntitySet="Words">
+          <ScalarProperty Name="ListId" ColumnName="ListId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Arabic" ColumnName="Arabic" />
           <ScalarProperty Name="English" ColumnName="English" />

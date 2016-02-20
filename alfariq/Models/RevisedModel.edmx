@@ -131,6 +131,7 @@
           <Property Name="FeedbackConditionID" Type="int" Nullable="false" />
           <Property Name="ParticipantID" Type="int" />
           <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="WordListId" Type="int" />
         </EntityType>
         <EntityType Name="TrialBlocks">
           <Key>
@@ -163,6 +164,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Arabic" Type="nvarchar(max)" Nullable="false" />
           <Property Name="English" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ListId" Type="int" />
         </EntityType>
         <Association Name="FK_PassProfilesForTrialBlocks_ToProfiles">
           <End Role="Profiles" Type="db38bab79d27554b96b50aa57c010cd149Model.Store.Profiles" Multiplicity="1" />
@@ -426,6 +428,7 @@
           <NavigationProperty Name="Participant" Relationship="db38bab79d27554b96b50aa57c010cd149Model.FK_Sessions_ToTParticipants" FromRole="Sessions" ToRole="Participants" />
           <NavigationProperty Name="TrialBlocks" Relationship="db38bab79d27554b96b50aa57c010cd149Model.FK_TrialBlocks_ToSessions" FromRole="Sessions" ToRole="TrialBlocks" />
           <Property Type="Boolean" Name="Completed" Nullable="false" />
+          <Property Type="Int32" Name="WordListId" />
         </EntityType>
         <EntityType Name="TrialBlock">
           <Key>
@@ -461,6 +464,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Arabic" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="English" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="ListId" />
           </EntityType>
         <Association Name="FK_Sessions_ToFeedbackConditions">
           <End Role="FeedbackConditions" Type="db38bab79d27554b96b50aa57c010cd149Model.FeedbackCondition" Multiplicity="1" />
@@ -556,6 +560,7 @@
           <EntitySetMapping Name="Sessions">
             <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Session">
               <MappingFragment StoreEntitySet="Sessions">
+                <ScalarProperty Name="WordListId" ColumnName="WordListId" />
                 <ScalarProperty Name="Completed" ColumnName="Completed" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -584,6 +589,7 @@
           <EntitySetMapping Name="Words">
             <EntityTypeMapping TypeName="db38bab79d27554b96b50aa57c010cd149Model.Word">
               <MappingFragment StoreEntitySet="Words">
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Arabic" ColumnName="Arabic" />
                 <ScalarProperty Name="English" ColumnName="English" />
