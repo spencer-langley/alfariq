@@ -304,11 +304,11 @@ $(function () {
 	    previewMarkup += '</table>';
 
 	    if (bonus) {
-	        previewMarkup += 'Your group will receive a bnous.</center>';
+	        previewMarkup += 'Your group will receive a bonus.</center>';
 	        TotalBonusEarned += BonusDollarValue;
 	    }
 	    else {
-	        previewMarkup += 'Your group will not receive a bnous.</center>';
+	        previewMarkup += 'Your group will not receive a bonus.</center>';
 	    }
 
 	    $('#blockIntroScreen').hide();
