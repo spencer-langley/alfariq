@@ -26,6 +26,7 @@ namespace alfariq.Controllers
         public ActionResult Index(LoginModel credentials)
         {
             var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
+
             if (credentials != null)
             {
                 var dbUser = entities.Participants.Where(x => x.Username == credentials.Username && x.Password == credentials.Password).SingleOrDefault();

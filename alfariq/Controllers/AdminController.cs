@@ -159,6 +159,7 @@ namespace alfariq.Controllers
 
             newSession.FeedbackCondition = feedback;
             newSession.Participant = part;
+            newSession.WordListId = form.WordListId;
             entities.SaveChanges();
 
             foreach(var block in form.TrialBlocks)
