@@ -381,7 +381,13 @@ $(function () {
 		CurrentTranslationsClicked = [];
 		CurrentCorrectChoices = [];
 		CurrentOptionsDisplayed = [];
-		PresentTrialBlockResults();
+		PauseForTrialBlockEnd();
+	}
+
+	function PauseForTrialBlockEnd() {
+	    $('#CountdownContainer').html('Please wait for the other participants to finish...');
+	    var millisecondsToWait = Math.floor(Math.random() * 10000) + 5000;
+	    setTimeout(PresentTrialBlockResults, millisecondsToWait);
 	}
 	
 	function EndTrial() {
@@ -393,17 +399,18 @@ $(function () {
 		}
 		console.log('Ending trial ' + CurrentTrialIndex);
 		CurrentTrialIndex++;
+		ConductTrial();
 	    //if(CurrentTrialIndex < TrialsPerBlock && CurrentCorrectCount < CorrectCountGoal)
-		if (CurrentCorrectCount < CorrectCountGoal)
-		{
-			ConductTrial();
-		}
-		else
-		{
-		    Die();
-		    clearTimeout(TimeoutTrialBlock);
-			EndTrialBlock();
-		}
+		//if (CurrentCorrectCount < CorrectCountGoal)
+		//{
+		//	ConductTrial();
+		//}
+		//else
+		//{
+		//    Die();
+		//    clearTimeout(TimeoutTrialBlock);
+		//	EndTrialBlock();
+		//}
 	}
 	
 	function PresentFeedback(userCorrect) {
