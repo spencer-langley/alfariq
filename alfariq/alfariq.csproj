@@ -302,6 +302,9 @@
       <LastGenOutput>RevisedModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Images\Participants\bill.jpg" />
+    <Content Include="Images\Participants\Meredith.png" />
+    <Content Include="Images\Participants\Michael.jpg" />
+    <Content Include="Images\Participants\Stanley.jpg" />
     <Content Include="Images\Participants\ted.jpg" />
     <Content Include="Images\Profiles\1.jpg" />
     <Content Include="Images\Profiles\10.jpg" />
