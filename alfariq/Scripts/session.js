@@ -99,7 +99,7 @@ $(function () {
 	NegativeFeedbackMessage = "Incorrect";
 	BonusDollarValue = parseFloat(0.5);
 	CorrectCountGoal = 13;
-	MemberPreviewTime = 2000;
+	MemberPreviewTime = 1000;
 	ProfilesPerRow = 6;
 	//TrialsPerBlock = 120;
 	sessionReady = true;
