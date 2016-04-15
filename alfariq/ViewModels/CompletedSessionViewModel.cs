@@ -102,11 +102,7 @@ namespace alfariq.ViewModels
             Option2 = t.Option2.English;
             Option3 = t.Option3.English;
             PromptedWord = t.Word.Arabic;
-<<<<<<< HEAD
-            Correct = (t.Word.English == t.Answer.English);
-=======
             Correct = (t.Word.English.Equals(t.Answer.English));
->>>>>>> origin/master
         }
     }
 }

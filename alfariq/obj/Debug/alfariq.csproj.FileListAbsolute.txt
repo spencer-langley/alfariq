@@ -76,7 +76,6 @@ D:\Personal\Projects\alfariq\alfariq\bin\zh-Hans\System.Spatial.resources.dll
 D:\Personal\Projects\alfariq\alfariq\bin\zh-Hant\System.Spatial.resources.dll
 D:\Personal\Projects\alfariq\alfariq\obj\Debug\alfariq.dll
 D:\Personal\Projects\alfariq\alfariq\obj\Debug\alfariq.pdb
-D:\Personal\Projects\alfariq\alfariq\obj\Debug\alfariq.csprojResolveAssemblyReference.cache
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\bin\alfariq.dll.config
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\bin\alfariq.dll
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\bin\alfariq.pdb
