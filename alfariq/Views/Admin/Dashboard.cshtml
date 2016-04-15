@@ -12,6 +12,6 @@
 <h3>Completed Sessions</h3>
 @foreach (var session in Model.CompletedSessions)
 {
-    <a href="/Admin/ViewSessionData/?sessionID=@session.Id">@session.Name</a> <a href="/Admin/DeleteSession/?sessionID=@session.Id">DELETE @session.Name</a>
+    <a href="/Admin/ViewSessionData/?sessionID=@session.Id">@session.Name</a> @*<a href="/Admin/DeleteSession/?sessionID=@session.Id">DELETE @session.Name</a>*@
     <br />
 }
