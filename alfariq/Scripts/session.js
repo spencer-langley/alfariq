@@ -439,16 +439,25 @@ $(function () {
 	function SelectOption() {
 		CurrentTrialSelectTime = Date.now();
 		$('.OptionContainer').prop('disabled', true);
+
+		var selectedText = $(this).text();
+		var optionsOnScreen = [CurrentOptionsDisplayed[CurrentOptionsDisplayed.length-1][0].English,CurrentOptionsDisplayed[CurrentOptionsDisplayed.length-1][1].English,CurrentOptionsDisplayed[CurrentOptionsDisplayed.length-1][2].English];
+
+		if (optionsOnScreen.indexOf(selectedText) == -1) {
+		    alert('Selected: ' + selectedText + ' from: ' + optionsOnScreen[0] + ' ' + optionsOnScreen[1] + ' ' + optionsOnScreen[2]);
+		}
+
+		console.log('Pushing: ' + $(this).text());
 		CurrentTranslationsClicked.push($(this).text());
-		console.log('RS: ' + CurrentTranslationsClicked[CurrentTrialIndex]);
-		console.log('LS: ' + CurrentWordsDisplayed[CurrentTrialIndex].English);
+		console.log('Guess: ' + CurrentTranslationsClicked[CurrentTranslationsClicked.length-1]);
+		console.log('Answer: ' + CurrentWordsDisplayed[CurrentWordsDisplayed.length - 1].English);
 		CurrentBlockLatencies.push(CurrentTrialSelectTime - CurrentTrialDisplayTime);
 		CurrentTrialSelectTime = 0;
 		CurrentTrialDisplayTime = 0;
-		if(CurrentTranslationsClicked[CurrentTrialIndex] == CurrentWordsDisplayed[CurrentTrialIndex].English)
+		if (CurrentTranslationsClicked[CurrentTranslationsClicked.length - 1] == CurrentWordsDisplayed[CurrentWordsDisplayed.length - 1].English)
 		{
 			console.log('Good choice');
-			CurrentCorrectChoices.push(CurrentWordsDisplayed[CurrentTrialIndex]);
+			CurrentCorrectChoices.push(CurrentWordsDisplayed[CurrentWordsDisplayed.length -1]);
 			PresentFeedback(true);
 		}
 		else
@@ -465,8 +474,10 @@ $(function () {
 			return;
 		}
 		$('.OptionContainer').prop('disabled', false);
-		var displayWords = [ CurrentWordsDisplayed[CurrentTrialIndex], CurrentWrongWord1, CurrentWrongWord2 ];
+		var displayWords = [CurrentWordsDisplayed[CurrentTrialIndex], CurrentWrongWord1, CurrentWrongWord2];
+		console.log('Answer first: ' + displayWords[0].English + ' ' + displayWords[1].English + ' ' + displayWords[2].English);
 		displayWords = Shuffle(displayWords);
+		console.log('Shuffled: ' + displayWords[0].English + ' ' + displayWords[1].English + ' ' + displayWords[2].English);
 		CurrentOptionsDisplayed.push(displayWords);
 		$('#Option1').html(displayWords[0].English);
 		$('#Option2').html(displayWords[1].English);
@@ -604,6 +615,7 @@ $(function () {
 		CurrentTrialIndex = 0;
 		CurrentCorrectCount = 0;
 		CurrentIncorrectCount = 0;
+		CurrentTranslationsClicked = []; //eliminate race/trigger condition
 	}
 
 	function RefreshTrialCounter() {

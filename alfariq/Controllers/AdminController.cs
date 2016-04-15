@@ -80,6 +80,50 @@ namespace alfariq.Controllers
             return Index();
         }
 
+        [AllowAnonymous]
+        public ActionResult DeleteSession(int sessionID)
+        {
+            var reply = new AjaxResponse();
+            reply.Success = false;
+            reply.Message = "Nothing happened";
+
+            var entities = new Models.db38bab79d27554b96b50aa57c010cd149Entities3();
+
+            var sessionRecord = entities.Sessions.Where(x => x.Id == sessionID).SingleOrDefault();
+
+            if (sessionRecord == null)
+            {
+                reply.Message = "Session ID not found";
+                return Json(reply);
+            }
+
+            if (!sessionRecord.Completed)
+            {
+                reply.Message = "Session not completed";
+                return Json(reply);
+            }
+
+            while(sessionRecord.TrialBlocks.Count > 0)
+            {
+                var tb = sessionRecord.TrialBlocks.First();
+                while (tb.Trials.Count > 0)
+                {
+                    var t = tb.Trials.First();
+                    entities.Trials.Remove(t);
+                }
+
+                tb.PassProfiles.Clear();
+                tb.FailProfiles.Clear();
+
+                entities.TrialBlocks.Remove(tb);
+            }
+
+            entities.Sessions.Remove(sessionRecord);
+            entities.SaveChanges();
+
+            return Json(reply);
+        }
+
         public ActionResult ViewSessionData(int? sessionID)
         {
             var entities = new db38bab79d27554b96b50aa57c010cd149Entities3();
@@ -89,7 +133,6 @@ namespace alfariq.Controllers
                 var existingSession = entities.Sessions.Where(x => x.Id == sessionID).FirstOrDefault();
                 var viewModel = new CompletedSessionViewModel(existingSession, entities.Profiles);
                 return View(viewModel);
-
             }
             return Index();
         }
