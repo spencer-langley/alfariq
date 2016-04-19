@@ -156,3 +156,4 @@ C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\bin\zh-Hant\System.Spatial.re
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\obj\Debug\alfariq.csprojResolveAssemblyReference.cache
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\obj\Debug\alfariq.dll
 C:\Users\lanspe01\Documents\GitHub\alfariq\alfariq\obj\Debug\alfariq.pdb
+D:\Personal\Projects\alfariq\alfariq\obj\Debug\alfariq.csprojResolveAssemblyReference.cache
